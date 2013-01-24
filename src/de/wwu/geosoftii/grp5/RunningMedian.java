@@ -13,25 +13,61 @@ public class RunningMedian {
 	
 	/**
 	 * Method to sort an array.
-	 * Bubblesort is used to check each value of the array, compare it and sort it.
+	 * Quicksort is used to check each value of the array and sort it.
 	 * 
 	 * @param x		the array to be sorted
 	 */
 	
-	public static void sort(double[] x) {			
-		boolean unsorted = true;
-		double temp;
-		
-		while(unsorted){
-			unsorted = false;
-			for (int i = 0; i < x.length - 1; i++)
-				if (x[i] > x[i+1]) {
-					temp = x[i];
-					x[i] = x[i+1];
-					x[i+1] = temp;
-					unsorted = true;
-				}
+	public static void sort(double[] x) {
+		qSort(x, 0, x.length-1);
+	}
+	
+	/**
+	 * Quicksort core method.
+	 * 
+	 * @param x			the array to be sorted
+	 * @param left		the number at the first position of the array
+	 * @param right		the number at the last position of the array
+	 */
+	
+	public static void qSort(double[] x, int left, int right) {
+		if (left < right) {
+			int i = partition(x, left, right);
+			qSort(x,left,i-1);
+			qSort(x,i+1,right);
 		}
+	}
+	
+	/**
+	 * Partition method of the quicksort algorithm.
+	 * 
+	 * @param x			the array to be sorted
+	 * @param left		the number at the first position of the array
+	 * @param right		the number at the last position of the array
+	 * @return
+	 */
+	
+	public static int partition(double[] x, int left, int right) {
+		double pivot = x[right];
+		double help;
+		int i = left;
+		int j = right-1;
+		
+		while(i<=j) {
+			if (x[i] > pivot) {
+				// switch x[i] and x[j]
+				help = x[i];
+				x[i] = x[j];
+				x[j] = help;
+				j--;
+			} else i++;
+		}
+		// switch x[i] and x[right]
+		help = x[i];
+		x[i] = x[right];
+		x[right] = help;
+		
+		return i;
 	}
 	
 	

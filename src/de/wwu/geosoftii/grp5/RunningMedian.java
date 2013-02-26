@@ -18,7 +18,11 @@ public class RunningMedian {
 	 * @param x		the array to be sorted
 	 */
 	
-	public static void sort(double[] x) {
+	public RunningMedian(){
+		
+	}
+	
+	public void sort(double[] x) {
 		qSort(x, 0, x.length-1);
 	}
 	
@@ -30,7 +34,7 @@ public class RunningMedian {
 	 * @param right		the number at the last position of the array
 	 */
 	
-	public static void qSort(double[] x, int left, int right) {
+	public void qSort(double[] x, int left, int right) {
 		if (left < right) {
 			int i = partition(x, left, right);
 			qSort(x,left,i-1);
@@ -47,7 +51,7 @@ public class RunningMedian {
 	 * @return
 	 */
 	
-	public static int partition(double[] x, int left, int right) {
+	public int partition(double[] x, int left, int right) {
 		double pivot = x[right];
 		double help;
 		int i = left;
@@ -78,7 +82,7 @@ public class RunningMedian {
 	 * @return			returns the median of the given array
 	 */
 	
-	 public static double Median(double[] Array) {
+	 public double Median(double[] Array) {
 		double Median;
 		
 		if (Array.length % 2 == 0)							// even numbers
@@ -94,7 +98,7 @@ public class RunningMedian {
 	  * @param Array	the array for which the running median shall be calculated.
 	  */
 	 
-	public static void RunningMedian(double[] Array) {	
+	public void RunningMedian(double[] Array) {	
 		int i = 0;
 		double[] jArray;
 		double RunningMedian;
@@ -118,7 +122,7 @@ public class RunningMedian {
 	 * @param Array	the array for which the running median and outliers shall be identified.
 	 */
 	
-	public static void RunningWindow(double[] Array) {
+	public void RunningWindow(double[] Array) {
 		int windowSize = 4;
 		int i = windowSize;
 		int step = 0;
@@ -155,12 +159,5 @@ public class RunningMedian {
 	}
 	
 	
-	public static void main(String[] args) {
-		double[] Array = {2,5,3,9,7,1,6,0};					// the array example
-		
-		RunningWindow(Array);
-		
-		
-	}
 	
 }
